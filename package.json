@@ -24,10 +24,10 @@
     "joi": "^17.8.3",
     "morgan": "^1.10.0",
     "swagger-ui-express": "^4.6.1",
-    "tsconfig-paths": "^4.1.2",
-    "tsoa": "^5.1.1"
+    "tsconfig-paths": "^4.1.2"
   },
   "devDependencies": {
+    "tsoa": "^5.1.1",
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-typescript": "^7.21.0",
