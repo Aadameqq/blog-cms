@@ -3,8 +3,8 @@ import dotenv from 'dotenv';
 import morgan from 'morgan';
 // @ts-ignore
 import swaggerUI from 'swagger-ui-express';
-import { decorateWithRouters } from './routers/decorateWithRouters';
 import swaggerDocument from 'swagger/swagger.json';
+import { decorateWithRouters } from './routers/decorateWithRouters';
 import { prismaClient } from '../database/prismaClient';
 
 dotenv.config();

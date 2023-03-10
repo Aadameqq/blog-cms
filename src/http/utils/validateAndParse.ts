@@ -12,6 +12,17 @@ export const enum ValidationSchemaLocations {
   QUERY = 'query',
 }
 
+const formatErrors = (errors: ValidationError[]) =>
+  errors.reduce((acc, errorsCategory) => {
+    if (!errorsCategory.constraints) return acc;
+
+    const newErrorMessages = Object.values(errorsCategory.constraints).map(
+      (error) => formatErrorMessage(error),
+    );
+
+    return [...acc, ...newErrorMessages];
+  }, [] as ErrorMessage[]);
+
 export const validateAndParse =
   (schema: ClassConstructor<object>, location: ValidationSchemaLocations) =>
   async (req: Request, res: Response, next: NextFunction) => {
@@ -26,15 +37,3 @@ export const validateAndParse =
 
     res.status(400).json({ errors: formattedErrors });
   };
-
-const formatErrors = (errors: ValidationError[]) => {
-  return errors.reduce((acc, errorsCategory) => {
-    if (!errorsCategory.constraints) return acc;
-
-    const newErrorMessages = Object.values(errorsCategory.constraints).map(
-      (error) => formatErrorMessage(error),
-    );
-
-    return [...acc, ...newErrorMessages];
-  }, [] as ErrorMessage[]);
-};

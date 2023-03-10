@@ -1,7 +1,9 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Body, Controller, Post, Route, Response } from 'tsoa';
 import { InternalServerError } from '../../errors/InternalServerError';
 import { CreateHelloDto } from './dtos/CreateHelloDto';
 import { CreatedHelloDto } from './dtos/CreatedHelloDto';
+
 @Route('/hello')
 export class HelloController extends Controller {
   @Post()
