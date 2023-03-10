@@ -24,6 +24,6 @@ module.exports = {
     'consistent-return': 'off',
     'class-methods-use-this': 'off',
   },
-  ignorePatterns: ['**/*.test.ts', '**/swagger/*'],
+  ignorePatterns: ['**/*.test.ts'],
   root: true,
 };
