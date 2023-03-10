@@ -6,6 +6,8 @@
     "moduleResolution": "node",
     "baseUrl": "./src",
     "paths": {
+      "./src/*": ["*"]
+
     },
     "allowJs": false,
     "outDir": "./dist",
