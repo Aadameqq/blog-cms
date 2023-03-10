@@ -1,8 +1,8 @@
-import express from "express";
-import { helloRouter } from "./helloRouter";
+import express from 'express';
+import { v1Router } from './v1/v1Router';
 
 const mainRouter = express.Router();
 
-mainRouter.use("/hello", helloRouter);
+mainRouter.use('/v1', v1Router);
 
 export { mainRouter };

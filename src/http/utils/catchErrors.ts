@@ -1,6 +1,7 @@
-import { NextFunction, Request, Response } from "express";
-import { InternalServerError } from "../../errors/InternalServerError";
-import { ServerError } from "../../errors/ServerError";
+import { NextFunction, Request, Response } from 'express';
+import { InternalServerError } from '../../errors/InternalServerError';
+import { ServerError } from '../../errors/ServerError';
+import { formatErrorMessage } from './formatErrorMessage';
 const defaultError = new InternalServerError();
 export const catchErrors =
   (callback: (req: Request, res: Response, next: NextFunction) => void) =>
@@ -17,5 +18,5 @@ export const catchErrors =
   };
 
 const respondWithServerError = (res: Response, err: ServerError) => {
-  res.status(err.getStatusCode()).json({ errorMessage: err.getMessage() });
+  res.status(err.getStatusCode()).json(formatErrorMessage(err.getMessage()));
 };

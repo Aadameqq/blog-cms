@@ -1,3 +1,3 @@
-export interface AuthorizationService {
-  setAuthorizationData(account: Account): void;
-}
+// export interface AuthorizationService {
+//   setAuthorizationData(account: Account): void;
+// }
