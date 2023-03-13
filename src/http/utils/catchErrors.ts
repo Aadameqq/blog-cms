@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { InternalServerError } from '../../errors/InternalServerError';
 import { ServerError } from '../../errors/ServerError';
 import { formatErrorMessage } from './formatErrorMessage';
+import { logger } from './logger';
 
 const defaultError = new InternalServerError();
 
@@ -15,10 +16,10 @@ export const catchErrors =
     try {
       callback(req, res, next);
     } catch (err) {
-      console.log(err);
       if (err instanceof ServerError) {
         return respondWithServerError(res, err);
       }
+      logger.error(err);
       respondWithServerError(res, defaultError);
     }
   };

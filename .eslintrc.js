@@ -23,6 +23,7 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 'off',
     'consistent-return': 'off',
     'class-methods-use-this': 'off',
+    'import/first': 'off',
   },
   ignorePatterns: ['**/*.test.ts'],
   root: true,
