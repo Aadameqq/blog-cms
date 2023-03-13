@@ -3,6 +3,6 @@ import { mainRouter } from './mainRouter';
 
 export const decorateWithRouters = (app: Application): Application => {
   app.use(express.json());
-  app.use('/api', mainRouter);
+  app.use('/', mainRouter);
   return app;
 };

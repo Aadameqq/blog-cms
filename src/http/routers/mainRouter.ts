@@ -1,8 +1,8 @@
 import express from 'express';
-import { v1Router } from './v1/v1Router';
+import { apiRouter } from './api/apiRouter';
 
 const mainRouter = express.Router();
 
-mainRouter.use('/v1', v1Router);
+mainRouter.use('/api', apiRouter);
 
 export { mainRouter };
