@@ -6,6 +6,7 @@
     "moduleResolution": "node",
     "baseUrl": "./src",
     "paths": {
+      "@*": ["./features/*"]
     },
     "allowJs": false,
     "outDir": "./dist",

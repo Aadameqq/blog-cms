@@ -7,7 +7,7 @@ import { CreatedHelloDto } from './dtos/CreatedHelloDto';
 export class HelloController extends Controller {
   @Post()
   @Response(201, 'Success')
-  create(@Body() hello: CreateHelloDto) {
+  public create(@Body() hello: CreateHelloDto) {
     if (hello.nickname === 'test') throw new Error('Error');
     return new CreatedHelloDto(`Hello ${hello.nickname}`);
   }

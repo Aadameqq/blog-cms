@@ -24,6 +24,8 @@ module.exports = {
     'consistent-return': 'off',
     'class-methods-use-this': 'off',
     'import/first': 'off',
+    'new-cap': 'off',
+    '@typescript-eslint/explicit-member-accessibility': 'error',
   },
   ignorePatterns: ['**/*.test.ts'],
   root: true,

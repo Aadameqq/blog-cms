@@ -14,3 +14,7 @@ model Test{
   id   Int      @id @default(autoincrement())
   name String
 }
+
+model Account{
+  id String @id @default(uuid())
+}

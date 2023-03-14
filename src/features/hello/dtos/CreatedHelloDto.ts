@@ -1,3 +1,3 @@
 export class CreatedHelloDto {
-  constructor(public readonly helloMessage: string) {}
+  public constructor(public readonly helloMessage: string) {}
 }
