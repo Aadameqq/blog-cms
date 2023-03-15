@@ -10,11 +10,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Test{
-  id   Int      @id @default(autoincrement())
-  name String
-}
-
 model Account{
   id String @id @default(uuid())
+  username String
+  avatarUrl String
+
+  // Temporary solution. Waiting for https://github.com/prisma/prisma/issues/2506 to be finished.
+  oAuthData OAuthData?
 }
+
+model OAuthData{
+  id String @id @default(uuid())
+  oAuthId String @unique
+  accountId String @unique
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+}
+
