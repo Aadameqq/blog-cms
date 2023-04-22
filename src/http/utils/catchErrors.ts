@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import { InternalServerError } from '../../errors/InternalServerError';
-import { ServerError } from '../../errors/ServerError';
+import { InternalServerError } from '../../server-errors/InternalServerError';
+import { ServerError } from '../../server-errors/ServerError';
 import { formatErrorMessage } from './formatErrorMessage';
 import { logger } from './logger';
 

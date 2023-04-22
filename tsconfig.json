@@ -1,12 +1,18 @@
 {
+  "ts-node": {
+    "files": true,
+    "ignore": [".d.ts"],
+    "compilerOptions": {},
+    "require": ["tsconfig-paths/register"]
+  },
   "compilerOptions": {
-    "target": "ES2022",
+    "target": "es2022",
     "module": "commonjs",
     "rootDir": "./src",
     "moduleResolution": "node",
     "baseUrl": "./src",
     "paths": {
-      "@*": ["./features/*"]
+      "@*": ["./features/*"] //TODO: change to ./features/*/index.ts
     },
     "allowJs": false,
     "outDir": "./dist",
@@ -20,7 +26,6 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "resolveJsonModule": true,
-    "strictPropertyInitialization": false,
+    "strictPropertyInitialization": false
   }
-
 }

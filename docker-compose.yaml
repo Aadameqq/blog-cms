@@ -4,14 +4,17 @@ services:
   web:
     build: .
     links:
-      - database
+      - postgresql
+      - redis
     depends_on:
-      database:
+      postgresql:
+        condition: service_healthy
+      redis:
         condition: service_healthy
     env_file:
       - .docker.env
     ports:
-      - "5500:5500"
+      - '5500:5500'
     environment:
       - PORT=5500
   migration:
@@ -19,26 +22,42 @@ services:
       context: .
       dockerfile: migration.Dockerfile
     links:
-      - database
+      - postgresql
     depends_on:
-      database:
+      postgresql:
         condition: service_healthy
     env_file:
       - .docker.env
     volumes:
       - ./prisma:/home/app/prisma
-  database:
+  postgresql:
     image: postgres:14
     env_file:
       - .docker.env
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready" ]
+      test: ['CMD-SHELL', 'pg_isready']
       interval: 10s
       timeout: 5s
       retries: 5
     ports:
-        - "5432:5432"
+      - '5432:5432'
     volumes:
-        - blog-cms-api-data:/var/lib/postgresql/data
+      - blog-cms-api-data-postgresql:/var/lib/postgresql/data
+  redis:
+    image: redis:7
+    env_file:
+      - .docker.env
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - '6379:6379'
+    volumes:
+      - blog-cms-api-data-redis:/var/lib/redis/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+
 volumes:
-  blog-cms-api-data:
+  blog-cms-api-data-postgresql:
+  blog-cms-api-data-redis:
