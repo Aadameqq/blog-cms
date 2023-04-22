@@ -6,7 +6,7 @@ import {
   SetSessionAuthData,
 } from '@auth/core';
 import { getUuidv4IdGenerator } from '@helpers/id-generator';
-import { getCreateUserPublisher } from '@user/core';
+import { getUserCreatedEventPublisher } from '@user/core';
 import { PrismaOAuthDataRepository } from './adapters/PrismaOAuthDataRepository';
 import { OAuthProviderApiProxyFactory } from './adapters/OAuthProviderApiProxyFactory';
 import { OAuthService } from './business-logic/OAuthService';
@@ -24,5 +24,5 @@ export const getOAuthService = (setSessionAuthData: SetSessionAuthData) =>
     )
     .provideValue('accountRepository', getPrismaAccountRepository())
     .provideValue('idGenerator', getUuidv4IdGenerator())
-    .provideValue('createUserPublisher', getCreateUserPublisher())
+    .provideValue('userCreatedEventPublisher', getUserCreatedEventPublisher())
     .injectClass(OAuthService);

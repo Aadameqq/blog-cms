@@ -5,7 +5,10 @@ import {
   IFindOneAccountRepository,
 } from '@auth/core';
 import { IIdGenerator } from '@helpers/id-generator';
-import { CreateUserEventDto, INotifyCreateUserPublisher } from '@user/core';
+import {
+  UserCreatedEventDto,
+  IPublishUserCreatedEventPublisher,
+} from '@user/core';
 import { IOAuthProviderApiProxyFactory } from './IOAuthProviderApiProxyFactory';
 import { ICreateOauthDataRepository } from './ICreateOauthDataRepository';
 import { OAuthData } from './OAuthData';
@@ -20,12 +23,10 @@ export class OAuthService implements IOAuthService {
       IFindOneByOAuthIdOAuthDataRepository,
     private providerApiProxyFactory: IOAuthProviderApiProxyFactory,
     private credentialsProvider: ICredentialsProvider,
-
     private accountRepository: ICreateAccountRepository &
       IFindOneAccountRepository,
     private idGenerator: IIdGenerator,
-
-    private createUserPublisher: INotifyCreateUserPublisher,
+    private userCreatedEventPublisher: IPublishUserCreatedEventPublisher,
   ) {}
 
   public static inject = [
@@ -34,7 +35,7 @@ export class OAuthService implements IOAuthService {
     'credentialsProvider',
     'accountRepository',
     'idGenerator',
-    'createUserPublisher',
+    'userCreatedEventPublisher',
   ] as const;
 
   public async handleAuthentication(code: string, providerType: string) {
@@ -94,11 +95,11 @@ export class OAuthService implements IOAuthService {
   }
 
   private emitCreateUserEvent(id: string, apiUserData: OAuthApiUserDataDto) {
-    const eventDto = new CreateUserEventDto(
+    const eventDto = new UserCreatedEventDto(
       id,
       apiUserData.username,
       apiUserData.avatarUrl,
     );
-    this.createUserPublisher.notify(eventDto);
+    this.userCreatedEventPublisher.publish(eventDto);
   }
 }

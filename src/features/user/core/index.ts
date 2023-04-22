@@ -1,10 +1,10 @@
 import { createInjector } from 'typed-inject';
-import { CreateUserPublisher } from './adapters/CreateUserPublisher';
+import { UserCreatedEventPublisher } from './adapters/UserCreatedEventPublisher';
 
-export * from './business-logic/CreateUserEventDto';
-export * from './business-logic/ICreateUserSubscriber';
-export * from './business-logic/INotifyCreateUserPublisher';
-export * from './business-logic/ISubscribeCreateUserPublisher';
+export * from './business-logic/UserCreatedEventDto';
+export * from './business-logic/IUserCreatedEventListener';
+export * from './business-logic/IPublishUserCreatedEventPublisher';
+export * from './business-logic/ISubscribeUserCreatedEventPublisher';
 
-export const getCreateUserPublisher = () =>
-  createInjector().injectClass(CreateUserPublisher);
+export const getUserCreatedEventPublisher = () =>
+  createInjector().injectClass(UserCreatedEventPublisher);
