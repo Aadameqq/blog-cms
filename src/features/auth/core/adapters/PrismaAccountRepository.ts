@@ -1,7 +1,7 @@
-import { Account } from '@auth/core/business-logic/Account';
+import { prismaClient } from '@database/prismaClient';
 import { ICreateAccountRepository } from '../business-logic/ICreateAccountRepository';
-import { prismaClient } from '../../../../database/prismaClient';
 import { IFindOneAccountRepository } from '../business-logic/IFindOneAccountRepository';
+import { Account } from '../business-logic/Account';
 
 export class PrismaAccountRepository
   implements ICreateAccountRepository, IFindOneAccountRepository

@@ -1,4 +1,4 @@
-import { capitalize } from '../../utils/capitalize';
+import { capitalize } from '@helpers/other';
 
 export type ErrorMessage = { errorMessage: string };
 

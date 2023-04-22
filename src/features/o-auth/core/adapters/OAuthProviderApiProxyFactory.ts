@@ -1,4 +1,4 @@
-import { IApiRequester } from '@api-requester';
+import { IApiRequester } from '@helpers/api-requester';
 import { IOAuthProviderApiProxyFactory } from '../business-logic/IOAuthProviderApiProxyFactory';
 import { OAuthProviderApiProxy } from '../business-logic/OAuthProviderApiProxy';
 import { GithubOAuthProviderApiProxy } from './GithubOAuthProviderApiProxy';

@@ -12,7 +12,10 @@
     "moduleResolution": "node",
     "baseUrl": "./src",
     "paths": {
-      "@*": ["./features/*"] //TODO: change to ./features/*/index.ts
+      "@*": ["./features/*/index.ts"],
+      "@database/*": ["./database/*"],
+      "@utils/*": ["./utils/*"],
+      "@helpers/*": ["./helpers/*/index.ts"],
     },
     "allowJs": false,
     "outDir": "./dist",

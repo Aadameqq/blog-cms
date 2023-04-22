@@ -1,15 +1,17 @@
 import { createInjector } from 'typed-inject';
-import { OAuthService } from '@o-auth/core/business-logic/OAuthService';
-import { PrismaOAuthDataRepository } from '@o-auth/core/adapters/PrismaOAuthDataRepository';
-import { OAuthProviderApiProxyFactory } from '@o-auth/core/adapters/OAuthProviderApiProxyFactory';
-import { getAxiosApiRequester } from '@api-requester';
+import { getAxiosApiRequester } from '@helpers/api-requester';
 import {
   getPrismaAccountRepository,
   getSessionCredentialsProvider,
   SetSessionAuthData,
 } from '@auth/core';
-import { getUuidv4IdGenerator } from '@id-generator';
+import { getUuidv4IdGenerator } from '@helpers/id-generator';
 import { getCreateUserPublisher } from '@user/core';
+import { PrismaOAuthDataRepository } from './adapters/PrismaOAuthDataRepository';
+import { OAuthProviderApiProxyFactory } from './adapters/OAuthProviderApiProxyFactory';
+import { OAuthService } from './business-logic/OAuthService';
+
+export * from './business-logic/IOAuthService';
 
 export const getOAuthService = (setSessionAuthData: SetSessionAuthData) =>
   createInjector()

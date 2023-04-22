@@ -1,4 +1,4 @@
-import { CreateUserEventDto } from '@user/core/business-logic/CreateUserEventDto';
+import { CreateUserEventDto } from './CreateUserEventDto';
 
 export interface INotifyCreateUserPublisher {
   notify(user: CreateUserEventDto): void;

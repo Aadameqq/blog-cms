@@ -1,17 +1,20 @@
-import { ICreateAccountRepository } from '@auth/core/business-logic/ICreateAccountRepository';
-import { IFindOneAccountRepository } from '@auth/core/business-logic/IFindOneAccountRepository';
-import { Account } from '@auth/core/business-logic/Account';
-import { ICredentialsProvider } from '@auth/core';
-import { IIdGenerator } from '@id-generator';
-import { LackOfDataConsistencyBetweenAuthAndOAuthContextsError } from '@o-auth/core/business-logic/LackOfDataConsistencyBetweenAuthAndOAuthContextsError';
+import {
+  Account,
+  ICreateAccountRepository,
+  ICredentialsProvider,
+  IFindOneAccountRepository,
+} from '@auth/core';
+import { IIdGenerator } from '@helpers/id-generator';
 import { CreateUserEventDto, INotifyCreateUserPublisher } from '@user/core';
-import { OAuthApiUserDataDto } from '@o-auth/core/business-logic/OAuthApiUserDataDto';
 import { IOAuthProviderApiProxyFactory } from './IOAuthProviderApiProxyFactory';
 import { ICreateOauthDataRepository } from './ICreateOauthDataRepository';
 import { OAuthData } from './OAuthData';
 import { IFindOneByOAuthIdOAuthDataRepository } from './IFindOneByOAuthIdOAuthDataRepository';
+import { IOAuthService } from './IOAuthService';
+import { LackOfDataConsistencyBetweenAuthAndOAuthContextsError } from './LackOfDataConsistencyBetweenAuthAndOAuthContextsError';
+import { OAuthApiUserDataDto } from './OAuthApiUserDataDto';
 
-export class OAuthService {
+export class OAuthService implements IOAuthService {
   public constructor(
     private oAuthDataRepository: ICreateOauthDataRepository &
       IFindOneByOAuthIdOAuthDataRepository,

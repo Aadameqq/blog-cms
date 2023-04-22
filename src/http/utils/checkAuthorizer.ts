@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
+import { UnauthorizedServerError } from '@helpers/server-errors';
 import { AuthorizeIf } from '../authorizers/AuthorizeIf';
-import { UnauthorizedServerError } from '../../server-errors/UnauthorizedServerError';
 import { catchErrors } from './catchErrors';
 
 export const checkAuthorizer = (authorizeIf: AuthorizeIf) =>

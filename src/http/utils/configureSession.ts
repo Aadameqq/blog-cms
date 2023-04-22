@@ -1,8 +1,7 @@
 import session from 'express-session';
 import { createClient } from 'redis';
 import RedisStore from 'connect-redis';
-import { getConfigVariable } from '../../utils/getConfigVariable';
-import { isDevelopmentEnv } from '../../utils/isDevelopmentEnv';
+import { getConfigVariable, isDevelopmentEnv } from '@helpers/other';
 
 const sessionRedisClient = createClient({
   url: getConfigVariable('REDIS_URL'),

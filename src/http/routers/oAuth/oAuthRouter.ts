@@ -1,13 +1,15 @@
 import express from 'express';
-import { getOAuthController } from '@o-auth/server';
-import { OauthCodeDto } from '@o-auth/server/dtos/OauthCodeDto';
-import { OauthProviderTypeDto } from '@o-auth/server/dtos/OauthProviderTypeDto';
+import {
+  getOAuthController,
+  OauthCodeDto,
+  OauthProviderTypeDto,
+} from '@o-auth/server';
+import { getConfigVariable } from '@helpers/other';
 import {
   validateAndParse,
   ValidationSchemaLocations,
 } from '../../utils/validateAndParse';
 import { catchErrors } from '../../utils/catchErrors';
-import { getConfigVariable } from '../../../utils/getConfigVariable';
 
 const oAuthRouter = express.Router();
 

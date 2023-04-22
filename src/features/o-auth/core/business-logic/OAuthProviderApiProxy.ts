@@ -1,4 +1,4 @@
-import { IApiRequester } from '@api-requester';
+import { IApiRequester } from '@helpers/api-requester';
 import { OAuthProvider } from './OAuthProvider';
 import { OAuthApiUserDataDto } from './OAuthApiUserDataDto';
 

@@ -1,9 +1,9 @@
+import { IOAuthService } from '@o-auth/core';
 import { OauthCodeDto } from './dtos/OauthCodeDto';
 import { OauthProviderTypeDto } from './dtos/OauthProviderTypeDto';
-import { OAuthService } from '../core/business-logic/OAuthService';
 
 export class OAuthController {
-  public constructor(private oAuthService: OAuthService) {}
+  public constructor(private oAuthService: IOAuthService) {}
 
   public static inject = ['oAuthService'] as const;
 

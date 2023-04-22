@@ -1,4 +1,4 @@
-import { Account } from '@auth/core/business-logic/Account';
+import { Account } from './Account';
 
 export interface ICredentialsProvider {
   provide(account: Account): void;

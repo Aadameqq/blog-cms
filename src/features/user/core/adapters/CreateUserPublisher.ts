@@ -1,7 +1,7 @@
-import { INotifyCreateUserPublisher } from '@user/core/business-logic/INotifyCreateUserPublisher';
-import { ISubscribeCreateUserPublisher } from '@user/core/business-logic/ISubscribeCreateUserPublisher';
-import { ICreateUserSubscriber } from '@user/core/business-logic/ICreateUserSubscriber';
-import { CreateUserEventDto } from '@user/core/business-logic/CreateUserEventDto';
+import { ISubscribeCreateUserPublisher } from '../business-logic/ISubscribeCreateUserPublisher';
+import { INotifyCreateUserPublisher } from '../business-logic/INotifyCreateUserPublisher';
+import { ICreateUserSubscriber } from '../business-logic/ICreateUserSubscriber';
+import { CreateUserEventDto } from '../business-logic/CreateUserEventDto';
 
 export class CreateUserPublisher
   implements INotifyCreateUserPublisher, ISubscribeCreateUserPublisher

@@ -1,6 +1,6 @@
-import { ICredentialsProvider } from '@auth/core';
-import { SetSessionAuthData } from '@auth/core/adapters/SetSessionAuthData';
+import { ICredentialsProvider } from '../business-logic/ICredentialsProvider';
 import { Account } from '../business-logic/Account';
+import { SetSessionAuthData } from './SetSessionAuthData';
 
 export class SessionCredentialsProvider implements ICredentialsProvider {
   public constructor(private setSessionAuthData: SetSessionAuthData) {}

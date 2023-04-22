@@ -1,7 +1,7 @@
-import { ICreateOauthDataRepository } from '@o-auth/core/business-logic/ICreateOauthDataRepository';
+import { prismaClient } from '@database/prismaClient';
 import { OAuthData } from '../business-logic/OAuthData';
-import { prismaClient } from '../../../../database/prismaClient';
 import { IFindOneByOAuthIdOAuthDataRepository } from '../business-logic/IFindOneByOAuthIdOAuthDataRepository';
+import { ICreateOauthDataRepository } from '../business-logic/ICreateOauthDataRepository';
 
 export class PrismaOAuthDataRepository
   implements IFindOneByOAuthIdOAuthDataRepository, ICreateOauthDataRepository

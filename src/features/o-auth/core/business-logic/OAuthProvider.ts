@@ -1,4 +1,4 @@
-import { ApiMethods } from '@api-requester';
+import { ApiMethods } from '@helpers/api-requester';
 
 type OAuthProviderEndpoint = {
   url: URL;

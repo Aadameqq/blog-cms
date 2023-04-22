@@ -1,8 +1,12 @@
-import { ApiMethods, ApiRequestError, ApiRequest } from '@api-requester';
+import {
+  ApiMethods,
+  ApiRequestError,
+  ApiRequest,
+} from '@helpers/api-requester';
+import { getConfigVariable } from '@helpers/other';
 import { OAuthProvider } from '../business-logic/OAuthProvider';
 import { OAuthApiUserDataDto } from '../business-logic/OAuthApiUserDataDto';
 import { OAuthProviderApiProxy } from '../business-logic/OAuthProviderApiProxy';
-import { getConfigVariable } from '../../../../utils/getConfigVariable';
 import { IncorrectOAuthCodeError } from '../business-logic/IncorrectOAuthCodeError';
 
 export class GithubOAuthProviderApiProxy extends OAuthProviderApiProxy {
