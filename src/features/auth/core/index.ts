@@ -1,13 +1,15 @@
 import { createInjector } from 'typed-inject';
-import { SessionCredentialsProvider } from './adapters/SessionCredentialsProvider';
-import { SetSessionAuthData } from './adapters/SetSessionAuthData';
-import { PrismaAccountRepository } from './adapters/PrismaAccountRepository';
+import { SessionCredentialsProvider } from './implementations/SessionCredentialsProvider';
+import { SetSessionAuthData } from './implementations/SetSessionAuthData';
+import { PrismaAccountRepository } from './implementations/PrismaAccountRepository';
+import { ICreateAccountRepository } from './interfaces/ICreateAccountRepository';
+import { IFindOneAccountRepository } from './interfaces/IFindOneAccountRepository';
 
-export * from './business-logic/ICredentialsProvider';
-export * from './adapters/SetSessionAuthData';
-export * from './business-logic/ICreateAccountRepository';
+export * from './interfaces/ICredentialsProvider';
+export * from './implementations/SetSessionAuthData';
+export * from './interfaces/ICreateAccountRepository';
 export * from './business-logic/Account';
-export * from './business-logic/IFindOneAccountRepository';
+export * from './interfaces/IFindOneAccountRepository';
 
 export const getSessionCredentialsProvider = (
   setAuthData: SetSessionAuthData,
@@ -16,5 +18,6 @@ export const getSessionCredentialsProvider = (
     .provideValue('setSessionAuthData', setAuthData)
     .injectClass(SessionCredentialsProvider);
 
-export const getPrismaAccountRepository = () =>
+export const createAccountRepository = (): ICreateAccountRepository &
+  IFindOneAccountRepository =>
   createInjector().injectClass(PrismaAccountRepository);

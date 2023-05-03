@@ -9,11 +9,11 @@ import {
   UserCreatedEventDto,
   IPublishUserCreatedEventPublisher,
 } from '@user/core';
-import { IOAuthProviderApiProxyFactory } from './IOAuthProviderApiProxyFactory';
-import { ICreateOauthDataRepository } from './ICreateOauthDataRepository';
+import { IOAuthProviderApiProxyFactory } from '../interfaces/IOAuthProviderApiProxyFactory';
+import { ICreateOauthDataRepository } from '../interfaces/ICreateOauthDataRepository';
 import { OAuthData } from './OAuthData';
-import { IFindOneByOAuthIdOAuthDataRepository } from './IFindOneByOAuthIdOAuthDataRepository';
-import { IOAuthService } from './IOAuthService';
+import { IFindOneByOAuthIdOAuthDataRepository } from '../interfaces/IFindOneByOAuthIdOAuthDataRepository';
+import { IOAuthService } from '../interfaces/IOAuthService';
 import { LackOfDataConsistencyBetweenAuthAndOAuthContextsError } from './LackOfDataConsistencyBetweenAuthAndOAuthContextsError';
 import { OAuthApiUserDataDto } from './OAuthApiUserDataDto';
 

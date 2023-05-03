@@ -1,5 +1,5 @@
 {
-  "exec": "ts-node -r tsconfig-paths/register src/http/server.ts ",
+  "exec": "ts-node -r tsconfig-paths/register src/http-implementation/server.ts ",
   "watch": ["src", "prisma", "package.json"],
   "ext": "*",
   "ignore": ["src/**/*.test.js", "src/**/fixtures/**"]

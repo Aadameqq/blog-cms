@@ -1,4 +1,4 @@
-import { ApiMethods } from './ApiMethods';
+import { ApiMethods } from '../interfaces/ApiMethods';
 
 export class ApiRequest {
   public constructor(

@@ -2,7 +2,7 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/http/index.js",
+  "main": "./dist/http-implementation/index.js",
   "scripts": {
     "gen-swagger": "tsoa spec",
     "compile": "tsc",
@@ -36,7 +36,8 @@
     "tsconfig-paths": "^4.1.2",
     "typed-inject": "^3.0.1",
     "uuid": "^9.0.0",
-    "winston": "^3.8.2"
+    "winston": "^3.8.2",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",

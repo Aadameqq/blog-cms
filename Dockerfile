@@ -33,4 +33,4 @@ COPY ./tsconfig.json ./
 
 EXPOSE $PORT
 
-CMD ["node","-r","tsconfig-paths/register", "./src/http/server.js"]
+CMD ["node","-r","tsconfig-paths/register", "./src/http-implementation/server.js"]

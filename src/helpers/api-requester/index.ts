@@ -1,10 +1,11 @@
 import { createInjector } from 'typed-inject';
-import { AxiosApiRequester } from './adapters/AxiosApiRequester';
+import { AxiosApiRequester } from './implementations/AxiosApiRequester';
+import { IApiRequester } from './interfaces/IApiRequester';
 
-export * from './business-logic/IApiRequester';
-export * from './business-logic/ApiMethods';
+export * from './interfaces/IApiRequester';
+export * from './interfaces/ApiMethods';
 export * from './business-logic/ApiRequest';
 export * from './business-logic/ApiRequestError';
 
-export const getAxiosApiRequester = () =>
+export const createApiRequester = (): IApiRequester =>
   createInjector().injectClass(AxiosApiRequester);

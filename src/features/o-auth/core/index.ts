@@ -1,28 +1,34 @@
 import { createInjector } from 'typed-inject';
-import { getAxiosApiRequester } from '@helpers/api-requester';
+import { createApiRequester } from '@helpers/api-requester';
 import {
-  getPrismaAccountRepository,
+  createAccountRepository,
   getSessionCredentialsProvider,
   SetSessionAuthData,
 } from '@auth/core';
-import { getUuidv4IdGenerator } from '@helpers/id-generator';
-import { getUserCreatedEventPublisher } from '@user/core';
-import { PrismaOAuthDataRepository } from './adapters/PrismaOAuthDataRepository';
-import { OAuthProviderApiProxyFactory } from './adapters/OAuthProviderApiProxyFactory';
+import { createIdGenerator } from '@helpers/id-generator';
+import { createUserCreatedEventPublisher } from '@user/core';
+import { PrismaOAuthDataRepository } from './implementations/PrismaOAuthDataRepository';
+import { OAuthProviderApiProxyFactory } from './implementations/OAuthProviderApiProxyFactory';
 import { OAuthService } from './business-logic/OAuthService';
+import { IOAuthService } from './interfaces/IOAuthService';
 
-export * from './business-logic/IOAuthService';
+export * from './interfaces/IOAuthService';
 
-export const getOAuthService = (setSessionAuthData: SetSessionAuthData) =>
+export const createOAuthService = (
+  setSessionAuthData: SetSessionAuthData,
+): IOAuthService =>
   createInjector()
     .provideClass('oAuthDataRepository', PrismaOAuthDataRepository)
-    .provideValue('apiRequester', getAxiosApiRequester())
+    .provideValue('apiRequester', createApiRequester())
     .provideClass('providerApiProxyFactory', OAuthProviderApiProxyFactory)
     .provideValue(
       'credentialsProvider',
       getSessionCredentialsProvider(setSessionAuthData),
     )
-    .provideValue('accountRepository', getPrismaAccountRepository())
-    .provideValue('idGenerator', getUuidv4IdGenerator())
-    .provideValue('userCreatedEventPublisher', getUserCreatedEventPublisher())
+    .provideValue('accountRepository', createAccountRepository())
+    .provideValue('idGenerator', createIdGenerator())
+    .provideValue(
+      'userCreatedEventPublisher',
+      createUserCreatedEventPublisher(),
+    )
     .injectClass(OAuthService);

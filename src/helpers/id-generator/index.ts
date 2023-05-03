@@ -1,7 +1,8 @@
 import { createInjector } from 'typed-inject';
-import { Uuidv4IdGenerator } from './adapters/Uuidv4IdGenerator';
+import { Uuidv4IdGenerator } from './implementations/Uuidv4IdGenerator';
+import { IIdGenerator } from './interfaces/IIdGenerator';
 
-export * from './business-logic/IIdGenerator';
+export * from './interfaces/IIdGenerator';
 
-export const getUuidv4IdGenerator = () =>
+export const createIdGenerator = (): IIdGenerator =>
   createInjector().injectClass(Uuidv4IdGenerator);
