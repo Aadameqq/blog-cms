@@ -5,4 +5,4 @@ COPY ./package*.json ./
 
 RUN npm ci prisma
 
-CMD ["npx", "prisma", "db", "push", "--skip-generate"]
+CMD ["npx", "prisma", "db", "push", "--skip-generate","--accept-data-loss"]
