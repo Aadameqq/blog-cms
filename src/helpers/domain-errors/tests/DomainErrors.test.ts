@@ -47,4 +47,16 @@ describe('DomainErrors', () => {
       expect(testDomainErrors.throwIfNotEmpty).toThrowError();
     });
   });
+  describe('.mergeWith', () => {
+    test('Should merge two domain errors instances', () => {
+      const testErrors2 = [new Error('3'), new Error('4')];
+      const testDomainErrors1 = new DomainErrors(testErrors);
+      const testDomainErrors2 = new DomainErrors(testErrors2);
+
+      testDomainErrors1.mergeWith(testDomainErrors2);
+
+      const expectedErrors = [...testErrors, ...testErrors2];
+      expect(testDomainErrors1.domainErrors).toEqual(expectedErrors);
+    });
+  });
 });

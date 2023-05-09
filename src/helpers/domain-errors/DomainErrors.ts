@@ -1,8 +1,11 @@
 import { DomainError } from './DomainError';
 
 export class DomainErrors extends Error {
-  public constructor(public readonly domainErrors: DomainError[] = []) {
+  public readonly domainErrors: DomainError[];
+
+  public constructor(domainErrors: DomainError[] = []) {
     super();
+    this.domainErrors = [...domainErrors];
   }
 
   public add = (domainError: DomainError) => {
@@ -13,5 +16,11 @@ export class DomainErrors extends Error {
 
   public throwIfNotEmpty = () => {
     if (!this.isEmpty()) throw this;
+  };
+
+  public mergeWith = (otherInstance: DomainErrors) => {
+    otherInstance.domainErrors.forEach((error) => {
+      this.add(error);
+    });
   };
 }
